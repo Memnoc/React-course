@@ -1,8 +1,24 @@
 # React course
 
-## Exploring React and the best practices around while building a real life project
+> A course to master the basics of React in a developer environment.
 
-### Some ES6 practiced and concepts are also explored for clarity purposes
+
+#### Exploring React and the best practices around while building a real life project
+> Some of the topic material studied in this course:
+
+ - Javascript ES6 basics
+ - React components and elements
+ - Debugging React Apps
+ - React internals
+ - Http and Ajax
+ - Server side development
+ - Routing
+ - Form validation
+ - Redux
+ - Authentication
+ - Testing: Jest and Enzyme
+
+
 
 ## Project app: The burger builder
 
