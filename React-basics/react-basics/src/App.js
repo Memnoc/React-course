@@ -8,7 +8,8 @@ class App extends Component {
       { name: 'Odin', age: 11028},
       { name: 'Thor', age: 3242},
       { name: 'Hela', age: 5328}
-    ]
+    ],
+    otherState: 'some other value'
   }
 
   switchNameHandler = () => {
@@ -36,3 +37,46 @@ class App extends Component {
 }
 
 export default App;
+
+
+/**
+ * React Hooks based approach
+ * Commit: new: React Hooks
+ */
+
+// const app = props => {
+//   const [ personsState, setPersonsState ] = useState({
+//     person: [
+//       { name: 'Odin', age: 11028},
+//       { name: 'Thor', age: 3242},
+//       { name: 'Hela', age: 5328}
+//     ],
+//     otherState: 'some other value'
+//   });
+
+//   const [otherState, setOtherState] = useState({otherState: 'some other value'});
+
+//   console.log(otherState, setOtherState);
+
+//   const switchNameHandler = () => {
+//     setPersonsState({
+//       person: [
+//       { name: 'The Almighty Odin', age: 15028},
+//       { name: 'Thor', age: 3242},
+//       { name: 'Hela', age: 5328}
+//     ]
+//     })
+//   }
+
+//     return (
+//       <div className="App">
+//         <h1>Hello I am a React app</h1>
+//         <button onClick={switchNameHandler}>Switch names</button>
+//         <Person name = {personsState.person[0].name} age={personsState.person[0].age} />
+//         <Person name = {personsState.person[1].name} age={personsState.person[1].age}> My hobbies: War and Parties </Person>
+//         <Person name = {personsState.person[2].name} age={personsState.person[2].age} />
+//       </div>
+//     );
+//   }
+
+// export default app;
