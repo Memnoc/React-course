@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
+import Welcome from './Welcome/Welcome';
 
 class App extends Component {
   state = {
@@ -9,28 +10,48 @@ class App extends Component {
       { name: 'Thor', age: 3242},
       { name: 'Hela', age: 5328}
     ],
-    otherState: 'some other value'
+    otherState: 'some other value',
+    welcome: [
+      { greeting: 'Welcome, oh great', name: '', test: ''}
+    ]
   }
 
-  switchNameHandler = () => {
+  switchNameHandler = (newName) => {
     this.setState({
       person: [
-      { name: 'The Almighty Odin', age: 15028},
+      { name: newName, age: 15028},
       { name: 'Thor', age: 3242},
       { name: 'Hela', age: 5328}
     ]
     })
   }
 
+  nameChangedHandler = (event) => {
+    this.setState({
+      person: [
+      { name: 'Odin', age: 15028},
+      { name: event.target.value, age: 3242},
+      { name: 'Hela', age: 5328}
+    ]
+    })
+  }
 
   render() {
     return (
       <div className="App">
         <h1>Hello I am a React app</h1>
-        <button onClick={this.switchNameHandler}>Switch names</button>
-        <Person name = {this.state.person[0].name} age={this.state.person[0].age} />
-        <Person name = {this.state.person[1].name} age={this.state.person[1].age}> My hobbies: War and Parties </Person>
-        <Person name = {this.state.person[2].name} age={this.state.person[2].age} />
+        <button onClick={() => this.switchNameHandler('Odiiiiiinnnnn!')}>Switch names</button>
+        <Person
+         name = {this.state.person[0].name} age={this.state.person[0].age}  />
+        <Person
+         name = {this.state.person[1].name} 
+         age={this.state.person[1].age}
+         changed={this.nameChangedHandler}> My hobbies: War and Parties </Person>
+        <Person
+         name = {this.state.person[2].name} 
+         age = {this.state.person[2].age}
+         click = {this.switchNameHandler.bind(this, 'No! It is Odin')} />
+        <Welcome greeting = {this.state.welcome[0].greeting}  name = {this.state.person[0].name} test= {this.state.otherState} /> 
       </div>
     );
   }
