@@ -11,9 +11,6 @@ class App extends Component {
       { name: 'Hela', age: 5328}
     ],
     otherState: 'some other value',
-    welcome: [
-      { greeting: 'Welcome, oh great', name: '', test: ''}
-    ],
     showPersons: false
   }
 
@@ -69,7 +66,6 @@ class App extends Component {
          name = {this.state.person[2].name} 
          age = {this.state.person[2].age}
          click = {this.switchNameHandler.bind(this, 'No! It is Odin')} />
-        <Welcome greeting = {this.state.welcome[0].greeting}  name = {this.state.person[0].name} test= {this.state.otherState} /> 
         </div> 
     );
   }
