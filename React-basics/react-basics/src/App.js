@@ -24,7 +24,10 @@ class App extends Component {
   }
 
   deletePersonHandler = (personIndex) => {
-    const persons = this.state.persons;
+    // Traditional syntax to copy an array (not just the pointer)
+    //const persons = this.state.persons.slice();
+    // ES6 syntax to copy an array (not just the pointer)
+    const persons = [...this.state.persons];
     persons.splice(personIndex, 1);
     this.setState({persons: persons})
   }
