@@ -8,7 +8,8 @@ class App extends Component {
     person: [
       { name: 'Odin', age: 11028},
       { name: 'Thor', age: 3242},
-      { name: 'Hela', age: 5328}
+      { name: 'Hela', age: 5328},
+      { name: 'Loki', age: 2328}
     ],
     otherState: 'some other value',
     showPersons: false
@@ -56,16 +57,9 @@ class App extends Component {
   if (this.state.showPersons) {
     persons = (
       <div>
-        <Person
-         name = {this.state.person[0].name} age={this.state.person[0].age}  />
-        <Person
-         name = {this.state.person[1].name} 
-         age={this.state.person[1].age}
-         changed={this.nameChangedHandler}> My hobbies: War and Parties </Person>
-        <Person
-         name = {this.state.person[2].name} 
-         age = {this.state.person[2].age}
-         click = {this.switchNameHandler.bind(this, 'No! It is Odin')} />
+      {this.state.person.map(person => {
+        return <Person name={person.name} age={person.age}/>
+      })}
         </div> 
     );
   }
@@ -83,28 +77,6 @@ class App extends Component {
 }
 
 export default App;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
