@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
-import Welcome from './Welcome/Welcome';
-
 class App extends Component {
   state = {
-    person: [
+    persons: [
       { name: 'Odin', age: 11028},
       { name: 'Thor', age: 3242},
       { name: 'Hela', age: 5328},
@@ -15,24 +13,20 @@ class App extends Component {
     showPersons: false
   }
 
-  switchNameHandler = (newName) => {
-    this.setState({
-      person: [
-      { name: newName, age: 15028},
-      { name: 'Thor', age: 3242},
-      { name: 'Hela', age: 5328}
-    ]
-    })
-  }
-
   nameChangedHandler = (event) => {
     this.setState({
-      person: [
+      persons: [
       { name: 'Odin', age: 15028},
       { name: event.target.value, age: 3242},
       { name: 'Hela', age: 5328}
     ]
     })
+  }
+
+  deletePersonHandler = (personIndex) => {
+    const persons = this.state.persons;
+    persons.splice(personIndex, 1);
+    this.setState({persons: persons})
   }
 
   togglePersonHandler = () => {
@@ -57,8 +51,12 @@ class App extends Component {
   if (this.state.showPersons) {
     persons = (
       <div>
-      {this.state.person.map(person => {
-        return <Person name={person.name} age={person.age}/>
+      {this.state.persons.map((persons, index) => {
+        return <Person
+         click={() => this.deletePersonHandler(index)}
+         key={index}  
+         name={persons.name} 
+         age={persons.age}/>
       })}
         </div> 
     );
