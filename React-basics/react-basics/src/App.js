@@ -13,7 +13,8 @@ class App extends Component {
     otherState: 'some other value',
     welcome: [
       { greeting: 'Welcome, oh great', name: '', test: ''}
-    ]
+    ],
+    showPersons: false
   }
 
   switchNameHandler = (newName) => {
@@ -36,6 +37,13 @@ class App extends Component {
     })
   }
 
+  togglePersonHandler = () => {
+    const doesShow = this.state.showPersons;
+    this.setState({
+      showPersons: !doesShow
+      })
+  }
+
   render() {
 
     const style = {
@@ -50,7 +58,9 @@ class App extends Component {
         <h1>Hello I am a React app</h1>
         <button 
         style={style}
-        onClick={() => this.switchNameHandler('Odiiiiiinnnnn!')}>Switch names</button>
+        onClick={this.togglePersonHandler}>Toggle Persons</button>
+        { this.state.showPersons ? 
+          <div>
         <Person
          name = {this.state.person[0].name} age={this.state.person[0].age}  />
         <Person
@@ -62,6 +72,8 @@ class App extends Component {
          age = {this.state.person[2].age}
          click = {this.switchNameHandler.bind(this, 'No! It is Odin')} />
         <Welcome greeting = {this.state.welcome[0].greeting}  name = {this.state.person[0].name} test= {this.state.otherState} /> 
+        </div> : null
+        }
       </div>
     );
   }
