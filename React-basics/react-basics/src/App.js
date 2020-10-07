@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
+import person from './Person/Person';
 class App extends Component {
   state = {
     persons: [
-      { name: 'Odin', age: 11028},
-      { name: 'Thor', age: 3242},
-      { name: 'Hela', age: 5328},
-      { name: 'Loki', age: 2328}
+      { id:'1', name: 'Odin', age: 11028},
+      { id:'2', name: 'Thor', age: 3242},
+      { id:'3', name: 'Hela', age: 5328},
+      { id:'4', name: 'Loki', age: 2328}
     ],
     otherState: 'some other value',
     showPersons: false
@@ -57,7 +58,7 @@ class App extends Component {
       {this.state.persons.map((persons, index) => {
         return <Person
          click={() => this.deletePersonHandler(index)}
-         key={index}  
+         key={person.id}  
          name={persons.name} 
          age={persons.age}/>
       })}
