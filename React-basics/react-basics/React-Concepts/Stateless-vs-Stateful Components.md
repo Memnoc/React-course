@@ -101,7 +101,7 @@ The Post  component receives the props  argument. You can of course name this ar
 
 `{props.title}`  then dynamically outputs the title  property of the props  object - which is available since we set the title  property inside AllPosts  component (see above).
 
-# Stateless VS Stateful Components
+# [Stateless VS Stateful Components](https://reactjs.org/docs/state-and-lifecycle.html)
 
 If you are managing states in your components, no matter the approach you're taking, you can differentiate the component in: Stateful or Stateless
 Stateful component (aka smart or container) - It is a component that can manage states; doesn't really matter if does so by using a useState hook or using a class-based approach using the state property. It is a good practice to **only have a couple of stateful components** in your app.
