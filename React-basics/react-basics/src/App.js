@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
 import person from './Person/Person';
+
+
 class App extends Component {
   state = {
     persons: [
@@ -14,14 +16,24 @@ class App extends Component {
     showPersons: false
   }
 
-  nameChangedHandler = (event) => {
-    this.setState({
-      persons: [
-      { name: 'Odin', age: 15028},
-      { name: event.target.value, age: 3242},
-      { name: 'Hela', age: 5328}
-    ]
-    })
+  nameChangedHandler = (event, id) => {
+    const personIndex = this.state.persons.findIndex(p => {
+      return p.id === id;
+    });
+
+    const person = {
+      ...this.state.persons[personIndex]
+    };
+
+    // Alternatively you could use:
+    //const person = Object.assign({}, this.state.persons[personIndex]);
+
+    person.name = event.target.value;
+
+    const persons = [...this.state.persons];
+    persons[personIndex] = person;
+
+    this.setState({ persons: persons })
   }
 
   deletePersonHandler = (personIndex) => {
@@ -58,9 +70,10 @@ class App extends Component {
       {this.state.persons.map((persons, index) => {
         return <Person
          click={() => this.deletePersonHandler(index)}
-         key={person.id}  
+         key={persons.id}  
          name={persons.name} 
-         age={persons.age}/>
+         age={persons.age}
+         changed={(event) => this.nameChangedHandler(event, persons.id)}/>
       })}
         </div> 
     );
